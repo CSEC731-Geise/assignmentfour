@@ -40,7 +40,7 @@
             }
             
             $this->name = escapeshellcmd($this->name);
-            $currentContents=shell_exec("cat " . $this->name);
+            echo shell_exec("cat " . $this->name);
             
             return "Succeeded";
         }
