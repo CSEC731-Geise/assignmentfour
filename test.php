@@ -34,14 +34,14 @@
         public function view() {
             chdir("/tmp/webapp/");
             
-            $realPath = realpath($this->name);
+            $this->name = realpath($this->name);
             
-            if ($realPath=="/etc/passwd") {
+            if ($this->name=="/etc/passwd") {
                 return "Directory Traversal";
             }
             
-            $safeFilename = escapeshellcmd($realPath);
-            $currentContents=shell_exec("cat " . $safeFilename);
+            $this->name = escapeshellcmd($this->name);
+            $currentContents=shell_exec("cat " . $this->name);
             
             return "Succeeded";
         }
